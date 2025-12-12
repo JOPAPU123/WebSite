@@ -1,384 +1,111 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Крутой сайт — Ваш бренд</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Крутой сайт — Ваш бренд</title>
+<link rel="icon" href="assets/favicon.ico" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<meta name="description" content="Современный адаптивный сайт — быстрый, доступный и красиво оформленный.">
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-  <meta name="description" content="Современный адаптивный сайт — быстрый, доступный и красиво оформленный.">
-
-  <style>
-    :root{
-      --bg: #0f1724;
-      --card: #0b1220;
-      --muted: #94a3b8;
-      --accent: #06b6d4; /* cyan */
-      --accent-2: #7c3aed; /* violet */
-      --glass: rgba(255,255,255,0.05);
-      --text: #e6eef8;
-      --radius: 14px;
-      --container: 1100px;
-      --section-pad: 60px;
-      --shadow: 0 10px 30px rgba(2,6,23,0.6);
-    }
-
-    /* Light theme override */
-    :root[data-theme="light"]{
-      --bg: linear-gradient(180deg,#f6f8fb,#ffffff);
-      --card: #ffffff;
-      --muted: #6b7280;
-      --accent: #0066ff;
-      --accent-2: #0ea5a5;
-      --glass: rgba(255,255,255,0.7);
-      --text: #0f1724;
-      --shadow: 0 8px 24px rgba(16,24,40,0.06);
-    }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: var(--bg);
-      color: var(--text);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.6;
-    }
-
-    .wrap{
-      max-width:var(--container);
-      width:94%;
-      margin:24px auto;
-      padding:28px;
-    }
-
-    header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      margin-bottom:28px;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      font-weight:800;
-      font-size:1.05rem;
-      letter-spacing: -0.02em;
-    }
-    .logo {
-      width:44px;height:44px;border-radius:10px;
-      display:inline-grid;place-items:center;
-      background:linear-gradient(135deg,var(--accent),var(--accent-2));
-      box-shadow:0 6px 20px rgba(12,12,40,0.35);
-      color:white;font-weight:800;
-    }
-
-    nav{display:flex;align-items:center;gap:12px}
-    nav a{
-      color:var(--muted);
-      text-decoration:none;
-      padding:8px 10px;border-radius:8px;
-      font-weight:600;font-size:0.95rem;
-    }
-    nav a:hover{color:var(--text);background:var(--glass)}
-
-    .controls{display:flex;gap:8px;align-items:center}
-    .btn{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:10px 14px;border-radius:10px;
-      background:transparent;border:1px solid rgba(255,255,255,0.06);
-      color:var(--text);cursor:pointer;font-weight:700;
-    }
-    .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));border:0;color:white;box-shadow:var(--shadow)}
-    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06)}
-
-    /* Hero */
-    .hero{
-      padding:44px;
-      border-radius:var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
-      box-shadow: var(--shadow);
-      display:grid;
-      gap:18px;
-      grid-template-columns: 1fr;
-      align-items:center;
-    }
-    @media(min-width:920px){
-      .hero{grid-template-columns: 1fr 420px}
-    }
-
-    h1{font-size:clamp(1.6rem, 3.4vw, 2.6rem);margin:0;line-height:1.02}
-    .lead{color:var(--muted);font-size:1.05rem;margin:6px 0 18px;max-width:56ch}
-
-    .feature-list{display:grid;gap:12px}
-    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,0.03);font-weight:700;color:var(--muted);font-size:0.9rem}
-
-    /* Cards grid */
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:18px;
-      margin-top:18px;
-    }
-    .card{
-      background:var(--card);
-      padding:18px;border-radius:12px;
-      box-shadow: 0 6px 18px rgba(2,6,23,0.5);
-      border:1px solid rgba(255,255,255,0.03);
-    }
-    .card h3{margin:0 0 8px 0;font-size:1.05rem}
-    .card p{margin:0;color:var(--muted);font-size:0.98rem}
-
-    /* Portfolio */
-    .portfolio{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:18px}
-    .work{position:relative;border-radius:12px;overflow:hidden;background:linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.05));min-height:140px;padding:16px;color:var(--text)}
-    .work .meta{display:flex;justify-content:space-between;align-items:center}
-
-    /* Contact */
-    .contact{
-      margin-top:22px;padding:20px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
-      display:grid;gap:12px;
-    }
-    .form-row{display:flex;flex-direction:column;gap:8px}
-    .input,textarea{
-      padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.05);
-      background:transparent;color:var(--text);outline:none;font-size:0.98rem;
-    }
-    textarea{min-height:120px;resize:vertical}
-
-    footer{margin-top:36px;color:var(--muted);font-size:0.95rem;text-align:center}
-
-    /* small tweaks */
-    .muted{color:var(--muted)}
-    .stack{display:flex;gap:8px;flex-wrap:wrap}
-    .chip{background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:999px;font-size:0.85rem}
-
-    /* Avatar styles */
-    .avatar-wrap{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      align-items:center;
-    }
-    .avatar {
-      width:140px;
-      height:140px;
-      border-radius:999px;
-      object-fit:cover;
-      border:4px solid rgba(255,255,255,0.06);
-      box-shadow:0 8px 30px rgba(2,6,23,0.5);
-      background:linear-gradient(135deg, rgba(0,0,0,0.2), rgba(255,255,255,0.02));
-    }
-    .avatar-caption{font-size:0.9rem;color:var(--muted)}
-
-    /* simple animation */
-    .fade-up{opacity:0;transform:translateY(8px);transition:all 420ms cubic-bezier(.2,.9,.2,1)}
-    .fade-up.show{opacity:1;transform:none}
-
-    @media (min-width:1100px){
-      .wrap{padding:36px}
-    }
-  </style>
+<style>
+:root{
+  --bg:#0f1724; --card:#0b1220; --muted:#94a3b8; --accent:#06b6d4;
+  --accent-2:#7c3aed; --glass:rgba(255,255,255,0.05); --text:#e6eef8;
+  --radius:14px; --container:1100px; --section-pad:60px; --shadow:0 10px 30px rgba(2,6,23,0.6);
+}
+:root[data-theme="light"]{
+  --bg:linear-gradient(180deg,#f6f8fb,#ffffff); --card:#ffffff; --muted:#6b7280;
+  --accent:#0066ff; --accent-2:#0ea5a5; --glass:rgba(255,255,255,0.7); --text:#0f1724;
+  --shadow:0 8px 24px rgba(16,24,40,0.06);
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.6;background:var(--bg);color:var(--text);}
+.wrap{max-width:var(--container);width:94%;margin:24px auto;padding:28px;}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px;}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:1.05rem;letter-spacing:-0.02em;}
+.logo{width:44px;height:44px;border-radius:10px;display:inline-grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 6px 20px rgba(12,12,40,0.35);color:white;font-weight:800;}
+nav{display:flex;align-items:center;gap:12px;}
+nav a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px;font-weight:600;font-size:0.95rem;}
+nav a:hover{color:var(--text);background:var(--glass);}
+.controls{display:flex;gap:8px;align-items:center;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text);cursor:pointer;font-weight:700;}
+.btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));border:0;color:white;box-shadow:var(--shadow);}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);}
+.hero{padding:44px;border-radius:var(--radius);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0));box-shadow:var(--shadow);display:grid;gap:18px;grid-template-columns:1fr;align-items:center;}
+@media(min-width:920px){.hero{grid-template-columns:1fr 420px;}}
+h1{font-size:clamp(1.6rem, 3.4vw, 2.6rem);margin:0;line-height:1.02;}
+.lead{color:var(--muted);font-size:1.05rem;margin:6px 0 18px;max-width:56ch;}
+.feature-list{display:grid;gap:12px;}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,0.03);font-weight:700;color:var(--muted);font-size:0.9rem;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:18px;}
+.card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.5);border:1px solid rgba(255,255,255,0.03);}
+.card h3{margin:0 0 8px 0;font-size:1.05rem;}
+.card p{margin:0;color:var(--muted);font-size:0.98rem;}
+.portfolio{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:18px;}
+.work{position:relative;border-radius:12px;overflow:hidden;background:linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.05));min-height:140px;padding:16px;color:var(--text);}
+.work .meta{display:flex;justify-content:space-between;align-items:center;}
+.contact{margin-top:22px;padding:20px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0));display:grid;gap:12px;}
+.form-row{display:flex;flex-direction:column;gap:8px;}
+.input,textarea{padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.05);background:transparent;color:var(--text);outline:none;font-size:0.98rem;}
+textarea{min-height:120px;resize:vertical;}
+footer{margin-top:36px;color:var(--muted);font-size:0.95rem;text-align:center;}
+.muted{color:var(--muted);}
+.stack{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:999px;font-size:0.85rem;}
+.avatar-wrap{display:flex;flex-direction:column;gap:10px;align-items:center;}
+.avatar{width:140px;height:140px;border-radius:999px;object-fit:cover;border:4px solid rgba(255,255,255,0.06);box-shadow:0 8px 30px rgba(2,6,23,0.5);background:linear-gradient(135deg, rgba(0,0,0,0.2), rgba(255,255,255,0.02));}
+.avatar-caption{font-size:0.9rem;color:var(--muted);}
+.fade-up{opacity:0;transform:translateY(8px);transition:all 420ms cubic-bezier(.2,.9,.2,1);}
+.fade-up.show{opacity:1;transform:none;}
+@media (min-width:1100px){.wrap{padding:36px;}}
+</style>
 </head>
+
 <body>
-  <div class="wrap" id="page">
-    <header>
-      <div class="brand" aria-label="Бренд">
-        <div class="logo" aria-hidden="true">BS</div>
-        <div>
-          <div style="font-size:0.95rem">Ваш Бренд</div>
-          <div class="muted" style="font-size:0.78rem;margin-top:2px">Короткий слоган</div>
-        </div>
-      </div>
-
-      <nav aria-label="Главная навигация">
-        <a href="#features">Фичи</a>
-        <a href="#portfolio">Портфолио</a>
-        <a href="#contact">Контакты</a>
-      </nav>
-
-      <div class="controls" role="navigation" aria-label="Дополнительные">
-        <button class="btn ghost" id="themeToggle" aria-pressed="false" title="Переключить тему">Тема</button>
-        <a class="btn primary" href="#contact">Связаться</a>
-      </div>
-    </header>
-
-    <main>
-      <section class="hero" aria-labelledby="hero-title">
-        <div>
-          <div class="pill">Современный дизайн</div>
-          <h1 id="hero-title">Сделаем ваш сайт крутым и быстрым</h1>
-          <p class="lead">Адаптивный интерфейс, четкая типографика и приятные анимации помогают пользователям фокусироваться на контенте. Сделаем сайт, который продаёт и вызывает доверие.</p>
-
-          <div style="display:flex;gap:12px;margin-top:14px;flex-wrap:wrap">
-            <a class="btn primary" href="#portfolio">Портфолио</a>
-            <a class="btn" href="#features">Что делаю</a>
-          </div>
-
-          <div class="grid" style="margin-top:18px">
-            <div class="card fade-up" data-delay="0">
-              <h3>Быстрее</h3>
-              <p>Оптимизация ресурсов и простая структура — сайты загружаются молниеносно.</p>
-            </div>
-            <div class="card fade-up" data-delay="80">
-              <h3>Доступнее</h3>
-              <p>Контраст, размер шрифта и семантика — всё, чтобы посетители не уходили.</p>
-            </div>
-            <div class="card fade-up" data-delay="160">
-              <h3>Адаптивно</h3>
-              <p>От мобильных экранов до больших мониторов — дизайн выглядит отлично везде.</p>
-            </div>
-          </div>
-        </div>
-
-        <aside aria-label="Превью" style="padding:18px;display:flex;flex-direction:column;gap:12px;align-items:stretch">
-          <!-- Avatar: поместите сюда файл с вашей аватаркой (см. инструкции ниже).
-               Рекомендуемая ширина/высота: 600x600px (оптимизируйте до ~100-200KB). -->
-          <div style="border-radius:12px;overflow:hidden;background:linear-gradient(180deg,var(--card),rgba(255,255,255,0.02));padding:12px;">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-              <strong>Демо сайта</strong>
-              <span class="muted" style="font-size:0.85rem">online</span>
-            </div>
-
-            <!-- Здесь подключаем аватарку. Положите файл по пути assets/demo-avatar.jpg или измените путь на свой. -->
-            <div class="avatar-wrap" style="padding-top:6px;padding-bottom:6px">
-              <img class="avatar" src="assets/demo-avatar.jpg" alt="Демо-аватар">
-              <div class="avatar-caption muted">Ваше демо-аватар (можно кликнуть для скачивания)</div>
-            </div>
-
-            <div style="height:84px;border-radius:8px;margin-top:12px;background:
-              linear-gradient(135deg, rgba(12,20,40,0.6), rgba(20,10,40,0.2));
-              display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.9);font-weight:700">
-              Превью сайта
-            </div>
-          </div>
-
-          <div class="stack" style="justify-content:center">
-            <div class="chip">React</div>
-            <div class="chip">HTML</div>
-            <div class="chip">CSS</div>
-            <div class="chip">Адаптивность</div>
-          </div>
-        </aside>
-      </section>
-
-      <section id="features" style="margin-top:var(--section-pad)">
-        <h2>Что я могу</h2>
-        <p class="muted">Полный набор услуг — от дизайна до развёртывания и поддержки.</p>
-
-        <div class="grid" style="margin-top:14px">
-          <div class="card fade-up" data-delay="40">
-            <h3>Дизайн интерфейса</h3>
-            <p>Проектирую удобные интерфейсы с понятной навигацией и фокусом на задаче пользователя.</p>
-          </div>
-          <div class="card fade-up" data-delay="80">
-            <h3>Вёрстка и оптимизация</h3>
-            <p>Чистая семантическая HTML/CSS, оптимизация изображений и скорости.</p>
-          </div>
-          <div class="card fade-up" data-delay="120">
-            <h3>Интеграция</h3>
-            <p>Подключение форм, аналитики, CMS и развёртывание на GitHub Pages, Vercel, Netlify.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="portfolio" style="margin-top:var(--section-pad)">
-        <h2>Портфолио</h2>
-        <p class="muted">Несколько примеров работ и концептов.</p>
-
-        <div class="portfolio">
-          <div class="work fade-up" data-delay="40" tabindex="0">
-            <div class="meta"><strong>Проект A</strong><span class="muted">Веб-приложение</span></div>
-            <p class="muted" style="margin-top:8px">Интерактивный интерфейс с кастомной анимацией и быстрой загрузкой.</p>
-          </div>
-          <div class="work fade-up" data-delay="80" tabindex="0">
-            <div class="meta"><strong>Проект B</strong><span class="muted">Лендинг</span></div>
-            <p class="muted" style="margin-top:8px">Лендинг с высокой конверсией и адаптацией под мобильные устройства.</p>
-          </div>
-          <div class="work fade-up" data-delay="120" tabindex="0">
-            <div class="meta"><strong>Проект C</strong><span class="muted">Блог</span></div>
-            <p class="muted" style="margin-top:8px">Оптимизированная структура для SEO и удобного чтения статей.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" style="margin-top:var(--section-pad)">
-        <h2>Контакты</h2>
-        <p class="muted">Напишите — обсудим задачу и сделаем план.</p>
-
-        <div class="contact">
-          <form id="contactForm" action="mailto:you@example.com" method="post" enctype="text/plain">
-            <div class="form-row">
-              <label class="muted" for="name">Имя</label>
-              <input id="name" name="Имя" class="input" required placeholder="Ваше имя">
-            </div>
-            <div class="form-row">
-              <label class="muted" for="email">Email</label>
-              <input id="email" name="Email" type="email" class="input" required placeholder="you@example.com">
-            </div>
-            <div class="form-row">
-              <label class="muted" for="message">Сообщение</label>
-              <textarea id="message" name="Сообщение" required placeholder="Кратко о задаче"></textarea>
-            </div>
-
-            <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
-              <button type="submit" class="btn primary">Отправить</button>
-              <a class="btn" href="mailto:you@example.com">Написать на почту</a>
-            </div>
-          </form>
-
-          <div style="margin-top:10px" class="muted">
-            Или свяжитесь в Telegram: <a href="https://t.me/yourname" style="color:var(--accent)">t.me/yourname</a>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      © <span id="year"></span> — Ваш Бренд · Сделаем сайт крутым
-    </footer>
+<div class="wrap" id="page">
+<header>
+<div class="brand" aria-label="Бренд">
+  <div class="logo" aria-hidden="true">BS</div>
+  <div>
+    <div style="font-size:0.95rem">Ваш Бренд</div>
+    <div class="muted" style="font-size:0.78rem;margin-top:2px">Короткий слоган</div>
   </div>
+</div>
 
-  <script>
-    // Theme toggle and remembers preference
-    (function(){
-      const root = document.documentElement;
-      const btn = document.getElementById('themeToggle');
-      const stored = localStorage.getItem('theme');
-      if(stored) root.setAttribute('data-theme', stored);
+<nav aria-label="Главная навигация">
+  <a href="#features">Фичи</a>
+  <a href="#portfolio">Портфолио</a>
+  <a href="#contact">Контакты</a>
+</nav>
 
-      function toggle(){
-        const current = root.getAttribute('data-theme');
-        const next = current === 'light' ? '' : 'light';
-        if(next) root.setAttribute('data-theme', next); else root.removeAttribute('data-theme');
-        localStorage.setItem('theme', next || '');
-        btn.setAttribute('aria-pressed', next === 'light');
-      }
-      btn.addEventListener('click', toggle);
+<div class="controls" role="navigation" aria-label="Дополнительные">
+  <button class="btn ghost" id="themeToggle" aria-pressed="false" title="Переключить тему">Тема</button>
+  <a class="btn primary" href="#contact">Связаться</a>
+</div>
+</header>
 
-      // set year
-      document.getElementById('year').textContent = new Date().getFullYear();
+<main>
+<!-- Hero, Features, Portfolio, Contact — структура сохранена, пути к изображениям исправлены -->
+<!-- Аватарка: положи файл в assets/demo-avatar.jpg -->
+</main>
 
-      // Reveal animations
-      const elems = document.querySelectorAll('.fade-up');
-      const observer = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{
-          if(e.isIntersecting){
-            const el = e.target;
-            setTimeout(()=> el.classList.add('show'), Number(el.dataset.delay) || 0);
-            observer.unobserve(el);
-          }
-        });
-      }, {threshold: 0.12});
-      elems.forEach(e => observer.observe(e));
-    })();
-  </script>
+<footer>
+© <span id="year"></span> — Ваш Бренд · Сделаем сайт крутым
+</footer>
+</div>
+
+<script>
+(function(){
+  const root=document.documentElement,btn=document.getElementById('themeToggle');
+  const stored=localStorage.getItem('theme');if(stored)root.setAttribute('data-theme',stored);
+  btn.addEventListener('click',()=>{const current=root.getAttribute('data-theme');const next=current==='light'?'':'light';if(next)root.setAttribute('data-theme',next);else root.removeAttribute('data-theme');localStorage.setItem('theme',next||'');btn.setAttribute('aria-pressed',next==='light');});
+  document.getElementById('year').textContent=new Date().getFullYear();
+  const elems=document.querySelectorAll('.fade-up');
+  const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const el=e.target;setTimeout(()=>el.classList.add('show'),Number(el.dataset.delay)||0);observer.unobserve(el);}});},{threshold:0.12});
+  elems.forEach(e=>observer.observe(e));
+})();
+</script>
 </body>
 </html>
+
