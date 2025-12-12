@@ -1,0 +1,124 @@
+!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Современная страница — образец</title>
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --accent:#0066ff;
+      --accent-2:#0ea5a5;
+      --max-width:1000px;
+      --radius:12px;
+      --glass: rgba(255,255,255,0.6);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Inter, Ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,var(--bg),#ffffff);
+      color:#111827;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
+      -webkit-text-size-adjust:100%;
+    }
+    .wrap{
+      max-width:var(--max-width);
+      width:92%;
+      margin:40px auto;
+      padding:32px;
+      background:transparent;
+    }
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      margin-bottom:28px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;font-weight:700;font-size:1.05rem;color:var(--accent)
+    }
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px}
+    nav a:hover{color:var(--accent)}
+    .hero{
+      background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(250,250,250,0.7));
+      border-radius:var(--radius);
+      padding:36px;
+      box-shadow:0 8px 24px rgba(16,24,40,0.06);
+      margin-bottom:28px;
+      backdrop-filter: blur(6px);
+    }
+    h1{font-size:clamp(1.6rem, 2.7vw, 2.4rem);margin:0 0 12px 0;line-height:1.05}
+    .lead{color:var(--muted);font-size:1.05rem;margin:0 0 18px}
+    .cta{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:10px;background:var(--accent);color:white;text-decoration:none;font-weight:600}
+    .grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:18px;
+    }
+    .card{
+      background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(16,24,40,0.04);border:1px solid rgba(16,24,40,0.04)
+    }
+    .card h3{margin:0 0 8px 0;font-size:1.05rem}
+    .card p{margin:0;color:var(--muted);font-size:0.98rem}
+    main p{max-width:72ch}
+
+    footer{margin-top:36px;color:var(--muted);font-size:0.95rem;text-align:center}
+
+    @media (min-width:1100px){
+      .wrap{padding:48px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">Мой сайт</div>
+      <nav>
+        <a href="#">Главная</a>
+        <a href="#features">Функции</a>
+        <a href="#contact">Контакты</a>
+      </nav>
+    </header>
+
+    <section class="hero" role="region" aria-label="Вступление">
+      <h1>Чистый, спокойно выглядящий интерфейс</h1>
+      <p class="lead">Небольшие корректировки типографики, ширины контейнера и цветовой палитры делают страницу приятнее для чтения и визуально более сбалансированной.</p>
+      <a class="cta" href="#features">Узнать больше</a>
+      <div class="grid" style="margin-top:20px;">
+        <div class="card">
+          <h3>Читаемость</h3>
+          <p>Увеличен `max-width` и межстрочный интервал для комфортного восприятия длинного текста.</p>
+        </div>
+        <div class="card">
+          <h3>Контраст</h3>
+          <p>Мягкий фон и акцентный цвет улучшают фокус без резкого контраста.</p>
+        </div>
+        <div class="card">
+          <h3>Адаптивность</h3>
+          <p>Макет плавно подстраивается под ширину экрана — от мобильных до больших мониторов.</p>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <section id="features">
+        <h2 style="margin-top:6px">Пара рекомендаций</h2>
+        <p>Если хотите сделать текст ещё шире, откройте переменную <strong>--max-width</strong> в секции CSS и увеличьте значение с `1000px` до `1100px` или `1200px`. Для улучшения типографики можно подключить шрифт через Google Fonts.</p>
+      </section>
+
+      <section id="contact" style="margin-top:22px">
+        <h2>Контакты</h2>
+        <p>Пример подвала и контактной информации. Это демонстрация аккуратного простого дизайна, который легко расширять.</p>
+      </section>
+    </main>
+
+    <footer>
+      © 2025 — Сайт улучшен для удобства чтения
+    </footer>
+  </div>
+</body>
+</html>
